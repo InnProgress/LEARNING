@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>HTML5 Canvas</title>
+</head>
+
+<body>
+    <canvas id="draw" width="800" height="800"></canvas>
+    <script>
+        const canvas = document.getElementById('draw');
+        const ctx = canvas.getContext('2d');
+
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        // ctx.strokeStyle = '#BADA55';
+        ctx.lineJoin = 'round';
+        ctx.lineCap = 'round';
+
+        let hue = 0;
+
+        let isDrawing = false;
+        let lastX = 0;
+        let lastY = 0;
+
+        let direction = true;
+
+        canvas.addEventListener('mousedown', () => {
+            isDrawing = true;
+            direction = true;
+            ctx.lineWidth = 10;
+            [lastX, lastY] = [event.offsetX, event.offsetY];
+        });
+        canvas.addEventListener('mouseup', () => isDrawing = false);
+        canvas.addEventListener('mouseout', () => isDrawing = false);
+        canvas.addEventListener('mousemove', function(event) {
+            if(!isDrawing) return;
+
+            hue++;
+            ctx.strokeStyle = `hsl(${hue}, 100%, 50%)`;
+
+            if(ctx.lineWidth >= 100 || ctx.lineWidth <= 5) {
+                direction = !direction;
+            }
+            if(direction) ctx.lineWidth ++;
+            else ctx.lineWidth --;
+
+            ctx.beginPath();
+            ctx.moveTo(lastX, lastY);
+            ctx.lineTo(event.offsetX, event.offsetY);
+            ctx.stroke();
+            [lastX, lastY] = [event.offsetX, event.offsetY];
+
+            // ctx.beginPath();
+            // ctx.fillStyle = "#" + ((1 << 24) * Math.random() | 0).toString(16);
+            // ctx.arc(event.pageX, event.pageY, Math.random() * 10 + 10, 0, 2 * Math.PI);
+            // ctx.fill();
+        });
+    </script>
+
+    <style>
+        html,
+        body {
+            margin: 0;
+        }
+    </style>
+
+</body>
+
+</html>
