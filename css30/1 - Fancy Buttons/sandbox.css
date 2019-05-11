@@ -3,3 +3,21 @@
     CODE YOUR STYLES BELOW!
 
    ====================================== */
+.facebook-style-btn {
+    border-radius: 2px;
+    padding: 8px 10px;
+    font-size: 13px;
+}
+.facebook-style-dark {
+    color: white;
+    background-color: #4267b2;
+    border: 1px solid #4267b2;
+}
+.facebook-style-dark:hover {
+    background-color: darkblue;
+}
+.facebook-style-light {
+    color: grey;
+    background-color: white;
+    border: 1px solid grey;
+}
