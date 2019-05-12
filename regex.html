@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // var string = "You are here Bean and you are 25 years old";
+        // var found = string.split('/[ ]/gm');
+        // let found = string.replace(/[ M]/gm, " [ FOUND ] ");
+        // console.dir(found);
+
+        // const regex = /^You/;
+        // const isExisting = regex.test(string);
+        // console.log(isExisting);
+
+        // const regex = /You are here ([A-Za-z]+) and you are ([0-9]+) years old/;
+        // let data = regex.exec(string);
+        // if(data) console.log(data[1], data[2]);
+
+        const string = "file.txt music.mp3 asd.jet despacito.mp3 kill.mp3 sounders.wav";
+        const regex = /(\w+)\.mp3/g;
+        let exec = regex.exec(string);
+
+        while(exec) {
+            console.log(exec);
+            exec = regex.exec(string);
+        }
+        console.table(exec);
+
+        // starts with wanted string -    /^String/     ^ at the start
+        // ends with wanted string -      /String$/     $ at the end
+        //                                              + select whole possible string
+        //                                              * 0 ir more
+        // optional character ?
+
+        // \w - any word
+        // \d{3}  - length 3 integer
+        // \s - check if there is space
+        // \n - check for new line
+        // \t - check for tab
+
+        // length: {1,7}
+        // [a-zA-Z0-9]
+        // find all chars -     /[d sa]/gm
+
+    </script>
+</body>
+</html>
